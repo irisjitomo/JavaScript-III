@@ -44,6 +44,11 @@ CharacterStats.prototype.attack = function(hitPoints){
     return `${this.name} attacked`
   }
 }
+CharacterStats.prototype.dead = function(){
+  if (this.healthPoints === 0){
+    return `${this.name} is dead`
+  }
+}
 
 
 
@@ -137,6 +142,39 @@ function Hero(attributes){
     language: 'Elvish',
   });
 
+  const villain = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 20,
+    name: 'Jango Fett',
+    team: 'Mandalorian',
+    weapons: [
+      'Blaster',
+    ],
+    language: 'English',
+  });
+
+  const hero = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 0,
+    name: 'Mace Windu',
+    team: 'Republic',
+    weapons: [
+      'Lightsaber',
+      'The Force - Light Side',
+    ],
+    language: 'English',
+  });
+
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
@@ -147,6 +185,7 @@ function Hero(attributes){
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+  console.log(hero.dead());
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
